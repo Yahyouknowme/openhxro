@@ -19,7 +19,7 @@ export const WrapperDropdown = styled(Select)`
     width: 100%;
     background: transparent;
     color: #fff;
-    border-radius: 2px;
+    border-radius: 10px;
     padding: 8px 12px 0 8px;
     font-family: 'Roboto';
     font-style: normal;

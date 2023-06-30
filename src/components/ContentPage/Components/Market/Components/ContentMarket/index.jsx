@@ -61,7 +61,7 @@ function ContentMarket({ dataMarket, accountSelect, productSelect }) {
           dataMarket.map((item, index) => {
             return (
               <WrapperRowContent
-                color={handleReturnIsBid(item) ? '#47C5D8' : '#E3627D'}
+                color={handleReturnIsBid(item) ? '#00fa53' : '#f81717'}
                 index={0}
                 key={item?.maker_order_id + index}
               >

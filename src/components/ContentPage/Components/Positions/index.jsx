@@ -54,10 +54,15 @@ export default function Position() {
   ]);
 
   return (
+    <>
     <WrapperContentPosition>
       <Label>Position</Label>
       <WrapperContentPositionTotal>{renderContent}</WrapperContentPositionTotal>
       {renderYourFills}
     </WrapperContentPosition>
+    {/* <WrapperContentPosition>
+    {renderYourFills}
+    </WrapperContentPosition> */}
+    </>
   );
 }

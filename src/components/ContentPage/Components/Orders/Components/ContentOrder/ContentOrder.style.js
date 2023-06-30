@@ -46,16 +46,17 @@ export const WrapperOrdersContent = styled.div`
   border-top: none;
   overflow: hidden;
   box-sizing: border-box;
+  background-color: #14081f;
 `;
 
 export const WrapperTitle = styled.div`
   min-height: 38px;
-  width: 100%;
+  width: %;
   display: flex;
   align-items: center;
   border: 1px solid #262c2e;
   border-left: none;
-  border-right: none;
+
 
   .instrument {
     width: 35%;

@@ -23,23 +23,35 @@ export default function ContentPage() {
     return <ChartView productSelect={productSelect} />;
   }, [JSON.stringify(productSelect)]);
   return (
+    <>
     <WrapperContent>
       <WrapperContentLeft>
         <WrapperContentChart>
-          <Market />
+          {/* <Market /> */}
           {chart}
+          <Modes />
         </WrapperContentChart>
+
         <WrapperContentOrder>
-          <Position />
+        <Position />
+          <Market/>
+
           <WrapperOrderRight>
             <Orders />
-            <Modes />
           </WrapperOrderRight>
+          
         </WrapperContentOrder>
+
       </WrapperContentLeft>
       <WrapperContentRight>
         <Ladder />
       </WrapperContentRight>
     </WrapperContent>
+    {/* <WrapperContentLeft>
+        <WrapperContentOrder>
+          <Position />
+        </WrapperContentOrder>
+      </WrapperContentLeft> */}
+    </>
   );
 }

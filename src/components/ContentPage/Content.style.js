@@ -34,7 +34,7 @@ export const WrapperContentChart = styled.div`
 export const WrapperOrderRight = styled.div`
   display: flex;
   flex: 1;
-  min-width: 705px;
+  min-width: 605px;
 `;
 
 export const WrapperContentRight = styled.div`
@@ -43,6 +43,7 @@ export const WrapperContentRight = styled.div`
   width: 280px;
   min-width: 280px;
   z-index: 1;
+  left:0;
   @media (max-width: 1440px) {
     width: 250px;
     min-width: 250px;

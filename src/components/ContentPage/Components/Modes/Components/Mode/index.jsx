@@ -8,12 +8,14 @@ import { useWallet } from '@hooks/useWallet';
 import Button from '@components/Button';
 import Input from '@components/Input';
 import {
+  WrapperMode,
   ButtonClear,
   GroupButton,
   Title,
   ValueBet,
   WrapperQuantity,
   WrapperSelectOrderType,
+  TableValueBet
 } from './Mode.style';
 import { useMemo } from 'react';
 import { useEffect } from 'react';
@@ -148,6 +150,7 @@ function Mode() {
           onChange={(e) => {
             setQtyGlobal(e?.target?.value || '');
           }}
+          className="input"
         />
       </WrapperQuantity>
       <WrapperQuantity>
@@ -159,6 +162,7 @@ function Mode() {
           onChange={(e) => {
             setPrice(e?.target?.value || '');
           }}
+          className="input"
         />
       </WrapperQuantity>
       <WrapperQuantity>
@@ -229,12 +233,12 @@ function Mode() {
 
 export default memo(Mode);
 
-const WrapperMode = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-const TableValueBet = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 20px;
-`;
+// const WrapperMode = styled.div`
+//   width: 100%;
+//   height: 100%;
+// `;
+// const TableValueBet = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin-top: 20px;
+// `;

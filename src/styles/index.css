@@ -2,7 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons'); 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*>*{
+  font-family: 'Poppins', sans-serif;
+}
 
 :root {
   font-family: Roboto, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -10,7 +20,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgb(255, 0, 0);
   background-color: #242424;
 
   font-synthesis: none;
@@ -35,7 +45,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: #000000;
+  /* background-image: linear-gradient(to right, #3b276b 10%, #4f1a81 30%, #009159 90%); */
+  background-color: rgb(0, 0, 0);
+  /* background: linear-gradient(to bottom, yellow, black); */
 }
 
 h1 {

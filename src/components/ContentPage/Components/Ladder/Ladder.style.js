@@ -8,6 +8,9 @@ export const WrapperLadders = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   position: relative;
+  background-color: #14081f;
+  border-left: 1px solid #262c2e;
+  border-bottom-right-radius:20px;
 
   .disable_select {
     pointer-events: none;
@@ -19,6 +22,7 @@ export const WrapperDropdown = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  border-radius:20px;
 
   .group-select {
     max-width: 100px;

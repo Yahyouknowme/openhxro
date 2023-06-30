@@ -5,12 +5,13 @@ export const StyledHeader = styled.header`
   width: 100%;
   min-height: 93px;
   display: flex;
-  position: sticky;
   top: 0px;
   left: 0px;
-  background: #000000;
+  background-color: #14081f;
   border: 1px solid #262c2e;
   z-index: 10;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 `;
 
 export const WrapperRerRefresh = styled.div`
@@ -35,6 +36,7 @@ export const WrapperContent = styled.div`
   width: 100%;
   max-width: 1000px;
   margin-right: 32px;
+  
 `;
 
 export const WrapperRowsTitle = styled.div`
@@ -43,6 +45,8 @@ export const WrapperRowsTitle = styled.div`
   border: 1px solid #262c2e;
   border-left: none;
   border-top: none;
+  
+  
 `;
 
 export const WrapperRowsValue = styled.div`
@@ -51,37 +55,45 @@ export const WrapperRowsValue = styled.div`
   flex: 1;
   min-height: 38px;
   border-right: 1px solid #262c2e;
+  
 `;
 
 export const WrapperGroupButton = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
+  
+display: flex;
+  align-items: center;
+  margin-left:auto;
+  white-space: nowrap;
+  margin-right: 4px;
+  min-width: 144px;
+  background: transparent;
+  border-radius: 10px;
+  right:0;
 
   .button-deposit,
   .connect-wallet {
     height: 28px;
-    border: 1px solid #fff;
-    border-radius: 2px;
+    border: 1px solid white;
+    border-radius: 10px;
     padding: 0px 12px;
     white-space: nowrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
     background-color: transparent;
-    color: #fff;
-    margin: 0px 4px;
+    color: white;
+    margin: 4px 4px;
   }
 
   .connect-wallet {
-    background-color: #fff;
+    background-color: white;
     color: #262c2e;
   }
 `;
 
 export const GroupButton = styled.div`
   display: flex;
-  margin-bottom: 8px;
+  justify-content: space-between;
+  
+  border-radius: 10px;
 `;
 
 export const AddressWallet = styled.div`
@@ -147,14 +159,19 @@ export const WrapperSelect = styled.div`
   margin-right: 4px;
   min-width: 144px;
   background: transparent;
+  border-radius: 10px;
   pointer-events: ${(props) => (props.disabled ? 'none' : 'auto')};
+
 
   .select-content-hidden {
     display: none;
+    border-radius: 10px;
   }
 
   .select-content-show {
-    display: flex;
+    padding: 4px;
+    border-radius: 10px;
+    min-width: 144px;
   }
 
   .icon-copy {
@@ -162,6 +179,11 @@ export const WrapperSelect = styled.div`
     margin-left: 2px;
     cursor: pointer;
   }
+
+  .option-content-show{
+    border-radius: 10px;
+  }
+
 `;
 
 export const WrapperButtonCreateAccount = styled.div`
@@ -189,7 +211,7 @@ export const ButtonCreateAccount = styled.button`
   margin-bottom: 4px;
   width: fit-content;
   font-size: 14px;
-  border-radius: 2px;
+  border-radius: 10px;
   padding: 4px 12px;
   background: transparent;
   color: #fff;

@@ -84,18 +84,18 @@ const ChartView = ({ productSelect }) => {
       tradingViewWidget.current = new window.TradingView.widget({
         ...defaultConfig,
         studies_overrides: {
-          'Overlay.candleStyle.upColor': '#47C5D8',
-          'Overlay.candleStyle.downColor': '#E3627D',
+          'Overlay.candleStyle.upColor': '#00fa53',
+          'Overlay.candleStyle.downColor': 'rgb(255, 0, 221)',
           'Overlay.candleStyle.barColorsOnPrevClose': true,
         },
         overrides: {
-          'mainSeriesProperties.candleStyle.upColor': '#47C5D8',
-          'mainSeriesProperties.candleStyle.downColor': '#E3627D',
+          'mainSeriesProperties.candleStyle.upColor': '#00fa53',
+          'mainSeriesProperties.candleStyle.downColor': 'rgb(255, 0, 221)',
           'mainSeriesProperties.candleStyle.borderColor': '#378658',
-          'mainSeriesProperties.candleStyle.borderUpColor': '#47C5D8',
-          'mainSeriesProperties.candleStyle.borderDownColor': '#E3627D',
-          'mainSeriesProperties.candleStyle.wickUpColor': '#47C5D8',
-          'mainSeriesProperties.candleStyle.wickDownColor': '#E3627D',
+          'mainSeriesProperties.candleStyle.borderUpColor': '#00fa53',
+          'mainSeriesProperties.candleStyle.borderDownColor': 'rgb(255, 0, 221)',
+          'mainSeriesProperties.candleStyle.wickUpColor': '#00fa53',
+          'mainSeriesProperties.candleStyle.wickDownColor': 'rgb(255, 0, 221)',
           'mainSeriesProperties.candleStyle.barColorsOnPrevClose': true,
 
           'paneProperties.vertGridProperties.color': '#262c2e',
@@ -105,7 +105,7 @@ const ChartView = ({ productSelect }) => {
         symbol: `PYTH:${handleReturnCoin(productSelect)}`,
         interval: '1',
         container_id: containerId.current,
-        backgroundColor: '#000000',
+        backgroundColor: '#14081f',
       });
     }
   }
@@ -143,12 +143,13 @@ const ChartView = ({ productSelect }) => {
 export default ChartView;
 
 const WrapperChart = styled.div`
-  width: 60%;
+  width: 71.5%;
   min-width: 706px;
   height: 100%;
   border: 1px solid #262c2e;
   position: relative;
   overflow: hidden;
+  
 
   article {
     z-index: 2;

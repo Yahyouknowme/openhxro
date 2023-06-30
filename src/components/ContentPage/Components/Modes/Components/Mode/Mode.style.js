@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const WrapperSweep = styled.div`
+export const WrapperMode = styled.div`
   width: 100%;
 
   height: 100%;
@@ -12,6 +12,11 @@ export const WrapperQuantity = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+
+  .wrapper-input {
+    max-width: 120px;
+    border-radius:10px;
+  }
 `;
 
 export const Title = styled.p`
@@ -46,7 +51,7 @@ export const Label = styled.p`
 export const TableValueBet = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 export const ValueBet = styled.div`
@@ -75,7 +80,7 @@ export const ButtonClear = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #ffffff;
-  border-radius: 2px;
+  border-radius: 10px;
   cursor: pointer;
   :hover {
     background-color: #262c2e;
@@ -90,6 +95,7 @@ export const GroupButton = styled.div`
   margin-top: 20px;
 
   button {
+    border-radius: 10px;
     width: calc(50% - 10px);
     border: none;
     font-family: 'Roboto';
@@ -98,16 +104,21 @@ export const GroupButton = styled.div`
     font-size: 16px;
     line-height: 19px;
     color: #ffffff;
-    :hover {
-      background-color: #262c2e;
-    }
   }
 
   .button-buy {
-    background: #47C5D8;
-  }
-
-  .button-sell {
-    background: #E3627D;
+    background-color: #00fa53;
+     :hover {
+       background: #5bff92;
+ 
+     }
+   }
+ 
+   .button-sell {
+     background-color: #f81717;
+     :hover {
+       background: #ff5b5b;
+ 
+     }
   }
 `;

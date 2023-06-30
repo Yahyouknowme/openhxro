@@ -183,7 +183,7 @@ const Header = () => {
             <WrapperSelect disabled={loading}>
               <select
                 value={walletConnect}
-                className="select-content"
+                className="select-content-show"
                 onChange={(e) => {
                   setWalletConnect(e?.target.value);
                 }}
@@ -211,9 +211,9 @@ const Header = () => {
           {/* select network */}
           {!isConnect && (
             <WrapperSelect disabled={loading}>
-              <select
+              <select 
                 value={netWorkConnect}
-                className="select-content"
+                className="select-content-show"
                 onChange={(e) => {
                   setNetWorkConnect(e?.target.value);
                 }}
@@ -270,7 +270,8 @@ const Header = () => {
             </ButtonCreateAccount>
             <IconLoading />
           </WrapperButtonCreateAccount>
-          <div className="description">
+          
+        <div className="description">
             Connected to Mainnet via{' '}
             {localStorage.getItem('provider') === 'phantom'
               ? 'Phantom'
@@ -283,6 +284,7 @@ const Header = () => {
             )}
           </div>
         </AddressWallet>
+          
       </WrapperGroupButton>
       {renderModal}
     </StyledHeader>
