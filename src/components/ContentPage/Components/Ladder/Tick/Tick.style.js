@@ -33,7 +33,7 @@ export const Ladder1 = styled.div`
   height: 100%;
   z-index: 1;
   background: ${(props) =>
-    props?.bid ? '#154148 !important' : '#5d2927 !important'};
+    props?.bid ? '#1d7a25 !important' : '#5d2927 !important'};
   transition: width 0.4s;
   border: none !important;
 `;
@@ -46,7 +46,7 @@ export const ValueLadder = styled.div`
   height: 100%;
   width: ${(props) => props?.width || '0%'};
   background: ${(props) =>
-    props?.bid ? '#47C5D8 !important' : ' #E3627D !important'};
+    props?.bid ? '#00fa53 !important' : ' #f81717 !important'};
   z-index: 2;
   transition: width 0.4s;
   border: none !important;

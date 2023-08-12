@@ -183,11 +183,11 @@ export const LadderWrapper = styled.div`
   pointer-events: ${({ event }) => (event ? 'auto' : 'none')};
 
   box-shadow: ${({ hover }) =>
-    hover ? '1px 1px 16px 1px rgba(71,197,216,0.8) inset' : 'none'};
+    hover ? '1px 1px 16px 1px rgba(255, 187, 0, 0.8) inset' : 'none'};
   -webkit-box-shadow: ${({ hover }) =>
-    hover ? '1px 1px 16px 1px rgba(71,197,216,0.8) inset' : 'none'};
+    hover ? '1px 1px 16px 1px rgba(255, 187, 0, 0.8) inset' : 'none'};
   -moz-box-shadow: ${({ hover }) =>
-    hover ? '1px 1px 16px 1px rgba(71,197,216,0.8) inset' : 'none'};
+    hover ? '1px 1px 16px 1px rgba(255, 187, 0, 0.8) inset' : 'none'};
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
