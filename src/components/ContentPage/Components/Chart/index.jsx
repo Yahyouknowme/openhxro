@@ -90,12 +90,12 @@ const ChartView = ({ productSelect }) => {
         },
         overrides: {
           'mainSeriesProperties.candleStyle.upColor': '#00fa53',
-          'mainSeriesProperties.candleStyle.downColor': 'rgb(255, 0, 221)',
+          'mainSeriesProperties.candleStyle.downColor': '#f81717',
           'mainSeriesProperties.candleStyle.borderColor': '#378658',
           'mainSeriesProperties.candleStyle.borderUpColor': '#00fa53',
-          'mainSeriesProperties.candleStyle.borderDownColor': 'rgb(255, 0, 221)',
+          'mainSeriesProperties.candleStyle.borderDownColor': '#f81717',
           'mainSeriesProperties.candleStyle.wickUpColor': '#00fa53',
-          'mainSeriesProperties.candleStyle.wickDownColor': 'rgb(255, 0, 221)',
+          'mainSeriesProperties.candleStyle.wickDownColor': '#f81717',
           'mainSeriesProperties.candleStyle.barColorsOnPrevClose': true,
 
           'paneProperties.vertGridProperties.color': '#262c2e',

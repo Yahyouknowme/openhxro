@@ -134,11 +134,11 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      {isConnect && (
+      {/* {isConnect && (
         <WrapperRerRefresh onClick={handleRefresh} refresh={refresh}>
           <IconLoading isWhite isturn={refresh} />
         </WrapperRerRefresh>
-      )}
+      )} */}
       {headerContent}
       <WrapperGroupButton>
         <GroupButton>

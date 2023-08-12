@@ -19,7 +19,7 @@ export const WrapperRerRefresh = styled.div`
   height: 100%;
   min-width: 50px;
   justify-content: center;
-  align-items: center;
+  align-items:  center;
   border-right: 1px solid #262c2e;
   pointer-events: ${(props) => (props.refresh ? 'none' : 'auto')};
 
@@ -62,7 +62,7 @@ export const WrapperGroupButton = styled.div`
   
 display: flex;
   align-items: center;
-  margin-left:auto;
+  margin-left:none;
   white-space: nowrap;
   margin-right: 4px;
   min-width: 144px;

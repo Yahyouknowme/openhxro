@@ -81,6 +81,7 @@ export const ButtonClear = styled.div`
   line-height: 19px;
   color: #ffffff;
   border-radius: 10px;
+  margin-top:10px;
   cursor: pointer;
   :hover {
     background-color: #262c2e;
