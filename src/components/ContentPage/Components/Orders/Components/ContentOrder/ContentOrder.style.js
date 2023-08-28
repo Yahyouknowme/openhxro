@@ -48,6 +48,7 @@ export const WrapperOrdersContent = styled.div`
   margin:2px;
   resize:'both';
   overflow:'auto';
+  width:420px;
 `;
 
 export const WrapperTitle = styled.div`

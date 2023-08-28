@@ -8,6 +8,7 @@ export const WrapperContentMarket = styled.div`
   background-color: #14081f;
   border-radius:10px;
   margin:2px;
+  width:560px;
 `;
 export const WrapperLoading = styled.div`
   position: absolute;

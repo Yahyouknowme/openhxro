@@ -15,7 +15,7 @@ import {
   WrapperTitle,
 } from './ContentDeposit.style';
 import { useWallet, WalletProvider } from '../../../../hooks/useWallet';
-
+import toast, {Toaster} from "react-hot-toast"
 
 // import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { useWallet as useWallet2, useAnchorWallet } from '@solana/wallet-adapter-react';
@@ -30,17 +30,29 @@ import { Connection, Keypair, VersionedTransaction,asLegacyTransaction , LAMPORT
 import { getBalance } from "../../../../utils/helpers";
 import bs58 from 'bs58';
 
+const isPhantomInstalled = window.phantom?.solana?.isPhantom;
+const getProvider = () => {
+  if ('phantom' in window) {
+    const provider = window.phantom?.solana;
+
+    if (provider?.isPhantom) {
+      return provider;
+    }
+  }
+
+  window.open('https://phantom.app/', '_blank');
+};
 
 
 function ContentDeposit({ onClose }) {
   
   const connection = new Connection('https://attentive-crimson-research.solana-mainnet.discover.quiknode.pro/09dcd24d8a59f8998c8539b9c9ed519b7245c3d1/');
   const { cashBalance, USDBalance, dataPnL, setLoading,
-    loading, connectWallet} = useWallet();
+    loading, connectWallet } = useWallet();
   const [value, setValue] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
-  const { signTransaction, wallet} = useWallet2();
+  const { signTransaction} = useWallet2();
   const USDC_MINT = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v";
   const [swappableTokenList, setSwappableTokenList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -83,6 +95,7 @@ function ContentDeposit({ onClose }) {
 
   // const[amount,setAmount]=useState(0);
 
+  // const provider=traderFunction.provider;
   const handleInputChange = (e) => {
     const newSearchTerm = e.target.value;
     setSearchTerm(newSearchTerm);
@@ -95,19 +108,19 @@ function ContentDeposit({ onClose }) {
 // useEffect(() => 
 // {
 //   const fetchData = async () => {
-  const anchorWallet = useAnchorWallet();
+  // const anchorWallet = useAnchorWallet();
 
-  const getSolanaWalletProvider = async () => {
-    if (!anchorWallet) {
-      return null;
-    }
+  // const getSolanaWalletProvider = async () => {
+  //   if (!anchorWallet) {
+  //     return null;
+  //   }
 
-    const provider = new SolanaProvider(connection, anchorWallet, {
-      skipPreflight: true,
-    });
+  //   const provider = new SolanaProvider(connection, anchorWallet, {
+  //     skipPreflight: true,
+  //   });
 
-    return provider;
-  };
+  //   return provider;
+  // };
 
 
 useEffect(() => {
@@ -190,34 +203,34 @@ async function getSwapTransaction(routes, wallet) {
  
   const publicKey= dataWallet?.walletPubkey;
   // const publicKey = new PublicKey(publicKeyCheck);
- console.log(publicKey)
+ // console.log(publicKey)
 
-  // const handleConfirm = async () => {
-  //   const balanceOfUSDC = await getBalance(
-  //     connection,
-  //     publicKey,
-  //     false,
-  //     new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v")
-  //   );
-  //   if (balanceOfUSDC >= Number(amount)) {
-  //     if (!value || `${value}`.includes('e')) {
-  //       return;
-  //     }
-  //     try {
-  //       await traderFunction.deposit(value, () => {
-  //         onClose();
-  //         traderFunction.trader.updateVarianceCache();
-  //       });
-  //     } catch (error) {
-  //       onClose();
-  //     }
+  const handleConfirm = async () => {
+    const balanceOfUSDC = await getBalance(
+      connection,
+      new PublicKey(publicKey),
+      false,
+      new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v")
+    );
+    if (balanceOfUSDC >= Number(value)) {
+      if (!value || `${value}`.includes('e')) {
+        return;
+      }
+      try {
+        await traderFunction.deposit(value, () => {
+          onClose();
+          traderFunction.trader.updateVarianceCache();
+        });
+      } catch (error) {
+        onClose();
+      }
       
-  //   } else {
-  //     setShowModal(true);
-  //   }
-  // };
+    } else {
+      setShowModal(true);
+    }
+  };
 
-
+  const provider= getProvider();
 
   const placePosition = useCallback(
     async (value) => {
@@ -226,21 +239,21 @@ async function getSwapTransaction(routes, wallet) {
         return;
       }
   
-      const provider = await getSolanaWalletProvider();
+      // const provider = await getSolanaWalletProvider();
   
       let transactionId = "";
   
-      try {
-        const balanceOfUSDC = await getBalance(
-          connection,
-          new PublicKey(publicKey),
-          false,
-          new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v")
-        );
-  
+      // const balanceOfUSDC = await getBalance(
+        //   connection,
+        //   new PublicKey(publicKey),
+        //   false,
+        //   new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v")
+        // );
+        
         const amountOfUSDCToBuy = Number(value);
-  
+        
         if (amountOfUSDCToBuy > 0) {
+          try {
           const routes = await getQuote(
             amountOfUSDCToBuy,
             selectedToken.address
@@ -254,57 +267,68 @@ async function getSwapTransaction(routes, wallet) {
           console.log(swapTransaction);
   
           // deserialize the transaction
-          const swapTransactionBuf = Buffer.from(swapTransaction, "base64");
-          var transaction =
-            VersionedTransaction.deserialize(swapTransactionBuf);
-// const req=new PublicKey(publicKey);
-            // sign the transaction
-transaction.sign([dataWallet.walletPubkey]);
-const rawTransaction = transaction.serialize()
-const txid = await connection.sendRawTransaction(rawTransaction, {
-  skipPreflight: true,
-  maxRetries: 2
-});
-transactionId = await connection.confirmTransaction(txid,'confirmed');
+          const swapTransactionBuf = Buffer.from(swapTransaction, 'base64');
+          var transaction = VersionedTransaction.deserialize(swapTransactionBuf);
+          console.log(transaction);
+          const { signature } = await provider.signAndSendTransaction(transaction);
+          await connection.getSignatureStatus(signature);
+          console.log(`https://solscan.io/tx/${signature}`);
 
-          // transactionId = await provider.sendAndConfirm(transaction);
-        }
-  
-        if (transactionId) {
-          console.log(`Transaction: https://solscan.io/tx/${txid}`);
-  
-          setTimeout(() => {
-            console.log('2 seconds over!')
-          }, 5000);
-  
-          const balanceOfUSDC = await getBalance(
-            connection,
-            new PublicKey(publicKey),
-            false,
-            new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v")
-          );
-          if (balanceOfUSDC >= Number(value)) {
-            if (!value || `${value}`.includes('e')) {
-              return;
+          if (signature) {
+            console.log(`Transaction: https://solscan.io/tx/${signature}`);
+            toast.success('Swap Success!')
+            toast('Now, Depositing in Trader Account...', {
+              icon: '⏳',
+            });
+            setTimeout(() => {
+              console.log('2 seconds over!')
+            }, 5000);
+    
+            const balanceOfUSDC = await getBalance(
+              connection,
+              new PublicKey(publicKey),
+              false,
+              new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v")
+            );
+            if (balanceOfUSDC >= Number(value)) {
+              if (!value || `${value}`.includes('e')) {
+                return;
+              }
+              try {
+                await traderFunction.deposit(value, () => {
+                  // onClose();
+                  traderFunction.trader.updateVarianceCache();
+                  setShowModal(false);
+                });
+              } catch (error) {
+                onClose();
+              }
+              
+            } else {
+              setShowModal(true);
             }
-            try {
-              await traderFunction.deposit(value, () => {
-                // onClose();
-                traderFunction.trader.updateVarianceCache();
-              });
-            } catch (error) {
-              onClose();
-            }
-            
-          } else {
-            setShowModal(true);
           }
+        } catch (error) {
+          console.error(`Transaction failed! ${error.message}`, transactionId);
+          // setShowModal(false);
+          return;
         }
-      } catch (error) {
-        console.error(`Transaction failed! ${error.message}`, transactionId);
-        // setShowModal(false);
-        return;
-      }
+          
+//             // sign the transaction
+// // transaction.sign([provider]);
+// const rawTransaction = transaction.serialize()
+// const txid = await connection.sendRawTransaction(rawTransaction, {
+//   skipPreflight: true,
+//   maxRetries: 2
+// });
+// transactionId = await connection.confirmTransaction(txid,'confirmed');
+// const signedTransaction = await provider.signTransaction(swapTransaction);
+// console.log(signedTransaction)
+// const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+// console.log(signature)
+        }
+  
+        
     },
     [publicKey, connection, signTransaction]
   );
@@ -312,7 +336,8 @@ transactionId = await connection.confirmTransaction(txid,'confirmed');
  
   return (
     <>
-
+<div><Toaster position="top-center"
+  reverseOrder={false}/></div>
 {showModal && (
       <>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', overflowX: 'hidden', overflowY: 'auto', position: 'fixed', inset: 0, zIndex: 50, outline: 'none', focus: 'outline', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
@@ -459,7 +484,7 @@ transactionId = await connection.confirmTransaction(txid,'confirmed');
       </WrapperRow> */}
 
       <WrapperButtonConfirm>
-        <Button className={'button-confirm'} onClick={() => setShowModal(true)}>
+        <Button className={'button-confirm'} onClick={handleConfirm}>
           Confirm
         </Button>
       </WrapperButtonConfirm>
